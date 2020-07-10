@@ -11,6 +11,10 @@ attr_accessor :name, :location
 
     end
 
+    def self.load_by_location(location) 
+        API.yelp_search("animal shelter",location )
+    end
+
     def save
         @@all << self
     end
