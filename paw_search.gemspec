@@ -1,5 +1,6 @@
 require_relative 'lib/paw_search/version'
 
+
 Gem::Specification.new do |spec|
   spec.name          = "paw_search"
   spec.version       = PawSearch::VERSION
@@ -30,6 +31,7 @@ Gem::Specification.new do |spec|
   # spec.add_dependency "http"
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "pry"
 end
 
 

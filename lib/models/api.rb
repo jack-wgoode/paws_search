@@ -19,7 +19,7 @@ module PawSearch
           begin
             @@key = File.open(File.expand_path("~/.yelp-api-key")).read.strip
           rescue 
-            puts "File read error;  Yelp API key not found! You can go sign up for one by following these instructions: https://ultimateelementor.com/docs/get-yelp-api-key/. Once you're done, come back and paste your key in here:"
+            puts "File read error;  Yelp API key not found! You may either enter your own key or exit by typing 'exit' and return with the key."
             @@key = gets.strip 
             return if @@key == "exit"
             File.open(File.expand_path("~/.yelp-api-key"), "w") do |file|
@@ -40,12 +40,12 @@ module PawSearch
             JSON.parse(response)["businesses"]
         end
         
-        def self.get_animal_shelters 
-          response = HTTParty.get('https://api.yelp.com/v3/businesses/search')
-          body = response.body
-          JSON.parse(body)
+        # def self.get_animal_shelters 
+        #   response = HTTParty.get('https://api.yelp.com/v3/businesses/search')
+        #   body = response.body
+        #   JSON.parse(body)
           
-        end
+        # end
 
     end
 
