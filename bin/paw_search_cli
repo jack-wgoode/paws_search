@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "paw_search"
+require "pry"
+require_relative "../lib/paw_search"
 
-paw_search:CLI.new.start
+
+PAW_SEARCH:CLI.new.start
 
 
 

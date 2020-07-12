@@ -1,4 +1,9 @@
-require_relative 'lib/paw_search/version'
+lib = File.expand_path("lib", __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "paw_search/version"
+
+
+#require_relative 'lib/paw_search/version'
 
 
 Gem::Specification.new do |spec|

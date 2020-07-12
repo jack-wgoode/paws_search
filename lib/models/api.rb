@@ -1,3 +1,9 @@
+
+require 'open-uri'
+require 'json'
+require 'httparty'
+
+
 module PawSearch
 
     class API
