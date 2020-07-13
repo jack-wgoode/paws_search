@@ -1,5 +1,5 @@
-require "httparty"
-require "http"
+# require "httparty"
+require "net/http"
 
 
 require_relative "paw_search/version"
@@ -8,7 +8,8 @@ require_relative "paw_search/api"
 require_relative "paw_search/cli"
 
 
-module ApiDemo
-  class Error < StandardError; end
+module PawSearch
+  class Error < StandardError 
   # Your code goes here...
+end
 end

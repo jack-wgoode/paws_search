@@ -1,7 +1,8 @@
 
 
 
-
+require 'json'
+require 'net/http'
 
 module PawSearch
 

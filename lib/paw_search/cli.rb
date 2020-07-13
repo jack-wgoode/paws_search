@@ -3,18 +3,20 @@ require "pry"
 module PawSearch
 
     class CLI
+
         def initialize
             @input = ""
-          end
+        end
       
-          def start 
+          def start
             puts "Welcome to Paw_Search! Your new best friend is just one search away."
-            binding.pry
+            
             set_location
-            list_restaurants
+            list_animal_shelters
             ask_for_choice
-            while @input != "exit"
+            while @input != "exit"  && @input != "back"
               if valid?
+                puts AnimalShelter.find_by_number(@input).details
       
               else
                 puts "Whoops! I didn't get that. Try again?"
@@ -26,10 +28,10 @@ module PawSearch
           def set_location 
             puts "So we can find the nearest adoption center, where are you?"
             @location = gets.chomp
-            Restaurant.load_by_location(@location)
+            AnimalShelter.load_by_location(@location)
           end
         
-          def list_restaurants 
+          def list_animal_shelters 
             AnimalShelter.all.each.with_index(1) do |shelter, index|
               puts "#{index}. #{shelter.name}"
             end
@@ -52,13 +54,6 @@ module PawSearch
             @input.to_i.between?(1, AnimalShelter.all.length)
           end
    
-   
-   
-   
-   
-   
-   
-   
-   
+     
     end
    end
