@@ -23,12 +23,12 @@ module PawSearch
           # 5. If the file doesn't exist, we'll want to take the user's input to get their API KEY and store it in a hidden file (one that starts with a .) in their home directory. This way it will be there the next time we run the program and they won't have to enter it again.
           # 6. To create a new file, we can use the File.open method with a second argument, "w", giving us write permissions to the file. Then we can pass a block to this and puts out content into the file
            begin
-            @@key = File.open(File.expand_path("~/.secret")).read.strip
+            @@key = File.open(File.expand_path("~/.yelp-key")).read.strip
            rescue 
             puts "File read error;  Yelp API key not found! You may either enter your own key or exit by typing 'exit' and return with the key."
             @@key = gets.strip 
             return if @@key == "exit"
-            File.open(File.expand_path("~/.secret.rb"), "w") do |file|
+            File.open(File.expand_path("~/.yelp-key"), "w") do |file|
             file.print @@key
            end
           end

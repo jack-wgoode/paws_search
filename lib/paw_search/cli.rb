@@ -19,14 +19,14 @@ module PawSearch
                 puts AnimalShelter.find_by_number(@input).details
       
               else
-                puts "Whoops! I didn't get that. Try again?"
+                puts "That was not a valid choice, Check the list and try again"
               end
               ask_for_choice
             end
           end
       
           def set_location 
-            puts "So we can find the nearest adoption center, where are you?"
+            puts "So that we can find an adoption center near you, enter your location."
             @location = gets.chomp
             AnimalShelter.load_by_location(@location)
           end
@@ -39,14 +39,18 @@ module PawSearch
       
           def ask_for_choice
             list_choices
-            @input = gets.strip
+            @input = gets.strip.downcase
+            start if @input == 'back'
+            return if @input == 'exit'
           end
       
           def list_choices 
             puts [
+              
               "To see more information about a adoption center or animal shelter, type it's number and hit enter",
               "If you'd like to return to the main menu and do another search, type 'back'",
               "If you'd like to exit the program, simply type 'exit'"
+
             ]
           end
       

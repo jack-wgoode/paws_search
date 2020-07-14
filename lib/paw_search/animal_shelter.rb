@@ -2,7 +2,7 @@
 module PawSearch
 class AnimalShelter
 
-attr_accessor :name, :location
+
 
     @@all = [] 
 
@@ -15,7 +15,7 @@ attr_accessor :name, :location
     def initialize(attributes = {})
         attributes.each do |attribute_name, attribute_value|
             if self.respond_to?("#{attribute_name}=") #is it there?
-                self.send("#{attribute_name}=", attribute_value)
+               self.send("#{attribute_name}=", attribute_value)
             end
         end       
     end
@@ -27,9 +27,9 @@ attr_accessor :name, :location
     end
 
     def self.create_from_search_results(search_results)
-        search_results.collect do |shelter_info_hash|
-            self.new(shelter_info_hash)
-        end
+     search_results.collect do |shelter_info_hash|
+     self.new(shelter_info_hash)
+     end
     end
 
     def self.find_by_number(number)
@@ -37,13 +37,15 @@ attr_accessor :name, :location
     end
 
     def details
-        <<-HEREDOC
-        #{self.name} has a rating of #{self.rating}
-        "Location: #{self.location["address1"]}
-        "Phone: #{self.phone}""
+           <<-HEREDOC
+        #{self.name} 
+        has a rating of #{self.rating}
+        #{self.location["address1"]} 
+        #{self.location["city"]} #{self.location["state"]} #{self.location["zip_code"]}
+        Phone: #{self.phone}
+        
         HEREDOC
     end
 
-   
  end # class
 end #module
