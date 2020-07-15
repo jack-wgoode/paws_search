@@ -9,7 +9,7 @@ module PawSearch
         end
       
           def start
-            puts "Welcome to Paw_Search! Your new best friend is just one search away."
+            puts "\nWelcome to PawSearch! Your new best friend is just one search away."
             
             set_location
             list_animal_shelters
@@ -31,10 +31,12 @@ module PawSearch
             AnimalShelter.load_by_location(@location)
           end
         
-          def list_animal_shelters 
+          def list_animal_shelters
+              puts "" 
             AnimalShelter.all.each.with_index(1) do |shelter, index|
               puts "#{index}. #{shelter.name}"
             end
+              puts ""
           end
       
           def ask_for_choice
@@ -45,19 +47,14 @@ module PawSearch
           end
       
           def list_choices 
-            puts [
-              
-              "To see more information about a adoption center or animal shelter, type it's number and hit enter",
-              "If you'd like to return to the main menu and do another search, type 'back'",
-              "If you'd like to exit the program, simply type 'exit'"
-
-            ]
+            puts ["To see more information about a adoption center or animal shelter, type it's number and hit enter",
+              "If you'd like to return to the main menu and do another search, type 'back' and press enter.",
+              "If you'd like to exit the program, simply type 'exit' and press enter."]
           end
       
           def valid?
             @input.to_i.between?(1, AnimalShelter.all.length)
           end
-   
-     
+      
     end
    end
