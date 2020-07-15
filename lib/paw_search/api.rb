@@ -1,17 +1,14 @@
-
-
-
 require 'json'
 require 'net/http'
 
 module PawSearch
 
-    class API
-        API_HOST = "https://api.yelp.com"
-        SEARCH_PATH = "/v3/businesses/search"
-        BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business id to the path
+class API
+    API_HOST = "https://api.yelp.com"
+    SEARCH_PATH = "/v3/businesses/search"
+    BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business id to the path
     
-        def self.api_key 
+    def self.api_key 
           # this method will retrieve the API KEY stored in a file called .yelp_api_key in our root 
           # directory. If the file doesn't exist it will ask us to enter an API key to the terminal 
           # and store our input in that file so that it will be read next time we run the program.
@@ -22,50 +19,27 @@ module PawSearch
           # 4. A couple extra notes: File.expand_path returns an absolute path and will allow us to use ~ which represents a user's home directory.
           # 5. If the file doesn't exist, we'll want to take the user's input to get their API KEY and store it in a hidden file (one that starts with a .) in their home directory. This way it will be there the next time we run the program and they won't have to enter it again.
           # 6. To create a new file, we can use the File.open method with a second argument, "w", giving us write permissions to the file. Then we can pass a block to this and puts out content into the file
-           begin
+          begin
             @@key = File.open(File.expand_path("~/.yelp-key")).read.strip
-           rescue 
+          rescue 
             puts "File read error;  Yelp API key not found! You may either enter your own key or exit by typing 'exit' and return with the key."
-            @@key = gets.strip 
-            return if @@key == "exit"
+            @@key = gets.strip
+          return if @@key == "exit"
             File.open(File.expand_path("~/.yelp-key"), "w") do |file|
             file.print @@key
            end
-          end
+         end
           @@key
-        end
+    end
     
-        def self.yelp_search(term, location)
-            url = "#{API_HOST}#{SEARCH_PATH}"
-            params = {
+    def self.yelp_search(term, location)
+      url = "#{API_HOST}#{SEARCH_PATH}"
+      params = {
                 term: term,
                 location: location
                 }
-            
-            response = HTTP.auth("Bearer #{api_key}").get(url, params: params)
-            JSON.parse(response)["businesses"]
-        end
-        
-        # def self.get_animal_shelters 
-        #   response = HTTParty.get('https://api.yelp.com/v3/businesses/search')
-        #   body = response.body
-        #   JSON.parse(body)
-          
-        # end
-
+      response = HTTP.auth("Bearer #{api_key}").get(url, params: params)
+      JSON.parse(response)["businesses"]
     end
-
+ end
 end
-        
-        
-    
-
-
-
-
-
-
-
-
-
-   

@@ -6,11 +6,11 @@ class AnimalShelter
 
     @@all = [] 
 
-    def self.all #provide access to the @@all array ('getter')
-        @@all 
-    end 
+   def self.all #provide access to the @@all array ('getter')
+       @@all 
+   end 
 
-    attr_accessor :id, :name, :location, :phone, :rating  # define attributes for mass assignment from hash
+    attr_accessor :id, :name, :location, :phone, :rating, :hours  # define attributes for mass assignment from hash
 
     def initialize(attributes = {})
         attributes.each do |attribute_name, attribute_value|
@@ -46,6 +46,5 @@ class AnimalShelter
         
         HEREDOC
     end
-
- end # class
-end #module
+ end 
+end 
