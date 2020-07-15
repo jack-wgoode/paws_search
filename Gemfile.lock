@@ -34,7 +34,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.5)
-    rake (12.3.2)
+    rake (13.0.1)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -59,7 +59,7 @@ DEPENDENCIES
   bundler (~> 2.0)
   paw_search!
   pry
-  rake (~> 12.0)
+  rake (~> 13.0)
   rspec (~> 3.0)
 
 BUNDLED WITH
