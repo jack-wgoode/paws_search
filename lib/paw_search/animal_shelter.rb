@@ -2,8 +2,6 @@
 module PawSearch
 class AnimalShelter
 
-
-
     @@all = [] 
 
    def self.all #provide access to the @@all array ('getter')

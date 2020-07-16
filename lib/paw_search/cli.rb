@@ -26,7 +26,6 @@ class CLI
   end
       
   def set_location 
-            
     puts "So that we can find an adoption center near you, enter your location.".colorize(:blue)
     @location = gets.chomp
     AnimalShelter.load_by_location(@location)
