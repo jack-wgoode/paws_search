@@ -34,9 +34,9 @@ class CLI
   def list_animal_shelters
     puts "" 
     AnimalShelter.all.each.with_index(1) do |shelter, index|
-              puts "#{index}. #{shelter.name}"
+          puts "#{index}. #{shelter.name}"
     end
-    puts ""
+      puts ""
   end
       
   def ask_for_choice
